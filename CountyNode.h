@@ -7,7 +7,7 @@
 
 #include <cstdlib>
 #include <iostream>
-
+#include <string.h>
 
 public class CountyNode
 {
@@ -28,8 +28,14 @@ public:
 
 	CountyNode getBoarders() return boarderArray_;{}
 
+	void printCounty(){
+		cout << name_ << endl;
+		}
+
 private:
 	
+	string name_;
+
 	int countyNumber_;
 
 	int boarderingCounties_;
@@ -37,5 +43,5 @@ private:
 	int colorValue_; //Made this an int instead of a string because 
 					//I think it'll be easier to compare this way.
 
-	CountyNode boarderArray_[boarderingCounties_];
+	CountyNode* boarderArray_ = CountyNode new[boarderingCounties_];
 };
