@@ -16,9 +16,9 @@ public:
 	
 	CountyNode(): countyNumber_(0), boarderingCounties_(0) , colorValue_(0) , boarderArray_(0) {}
 
-	CountyNode(int countyNumber, int boarderingCounties, int colorValue, CountyNode boarderArray[boarderingCounties]): 
+	CountyNode(int countyNumber, int boarderingCounties, int colorValue): 
 		countyNumber(0), boarderingCounties_(boarderingCounties) , colorValue_(colorValue) 
-		, boarderArray_(boarderArray) {}
+		, boarderArray_ = CountyNode new[boarderingCounties_] {};
 
 	int getCountyNumber() return countyNumber_;{}
 
