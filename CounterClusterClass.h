@@ -13,12 +13,18 @@ public:
 
 	CounterCluster(int clusterNumber, int clusterColor, int suroundingClusters, int counties): 
 		clusterNumber_(clusterNumber) , clusterColor(clusterColor_), surroundingClusters(suroundingClusters_)	
-		, surroundingClustersArray_ = CounterCluster new[suroundingClusters], int counties_(counties), 
+		, surroundingClustersArray_ = CounterCluster new[surroundingClusters], int counties_(counties), 
 			countyArray_ = CountyNode new[counties] {};	
 	
 	CounterCluster(): 
-		clusterColor_(0), surroundingClusters_(0), surroundingClustersArray_(0) {};
-	~CounterClusterClass();
+		clusterNumber_(0), clusterColor_(0), surroundingClusters_(0), surroundingClustersArray_(0) {};
+	
+	~CounterClusterClass(){
+		delete[] surroundingClusters_;
+		delete[] countyArray_;
+		}
+
+	int getNumber(){return clusterNumber_;}
 
 	int getColor(){return clusterColor_;}
 
@@ -42,6 +48,6 @@ private:
 	int counties_;
 	int clusterColor_;
 	int surroundingClusters_;
-	CountyCluster* surroundingClustersArray_ = CounterCluster new[suroundingClusters_];
+	CountyCluster* surroundingClustersArray_ = CounterCluster new[surroundingClusters_];
 	CountyNode* countyArray_ = CountyNode new[counties];
 };
