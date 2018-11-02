@@ -4,16 +4,17 @@
 //Each node of the graph will have a graph consisting of the counties in that cluster.
 
 
-#inlcude "GraphClass.h"
-
+#include "GraphClass.h"
+#include "CountyNode.h"
 
 public class CounterCluster
 {
 public:
 
-	CounterCluster(int clusterColor, int suroundingClusters): 
-		clusterColor(clusterColor_), surroundingClusters(suroundingClusters_)	
-		, surroundingClustersArray_[suroundingClusters] {};	
+	CounterCluster(int clusterNumber, int clusterColor, int suroundingClusters, int counties): 
+		clusterNumber_(clusterNumber) , clusterColor(clusterColor_), surroundingClusters(suroundingClusters_)	
+		, surroundingClustersArray_ = CounterCluster new[suroundingClusters], int counties_(counties), 
+			countyArray_ = CountyNode new[counties] {};	
 	
 	CounterCluster(): 
 		clusterColor_(0), surroundingClusters_(0), surroundingClustersArray_(0) {};
@@ -23,10 +24,24 @@ public:
 
 	int getsuroundingClusters(){return surroundingClusters_;}
 
-	int getsuroundingClustersArray(){return surroundingClustersArray_;}
+	CounterCluster& getsuroundingClustersArray(){
+			return surroundingClustersArray_;
+		}
+
+	CountyNode& getCounties(){
+		return countyArray_;
+	}
+
+	void printCluster(){
+		for (int i = 0; i < counties_; ++i)
+			cout << countyArray_[i] << endl;
+		}
 private:
+	int clusterNumber_;
 	GraphClass countyGraph_;
+	int counties_;
 	int clusterColor_;
 	int surroundingClusters_;
-	CountyCluster surroundingClustersArray_[suroundingClusters_];
+	CountyCluster* surroundingClustersArray_ = CounterCluster new[suroundingClusters_];
+	CountyNode* countyArray_ = CountyNode new[counties];
 };
