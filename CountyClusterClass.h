@@ -53,7 +53,6 @@ public:
 		return *this;
 	}
 
-
 	void printCluster(){
 		for (int i = 0; i < counties_; ++i)
 			cout << countyArray_[i] << endl;

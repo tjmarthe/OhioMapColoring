@@ -5,6 +5,7 @@
 
 
 void color(CountyClusterClass curr){
+	
 	bool isConnectedOne;
 	bool isConnectedTwo;
 	bool isConnectedThree;
@@ -12,7 +13,9 @@ void color(CountyClusterClass curr){
 	bool isConnectedFive;
 	bool isConnectedSix;
 	
-	for (int i = 0; i < curr.surroundingClusters_; ++i;){
+	//
+	for (int i = 0; i < curr.surroundingClusters_; ++i;)
+	{
 		if(curr.surroundingClusterArray_[i].getColor = 1)
 			isConnectedOne = true;	
 		if(curr.surroundingClusterArray_[i].getColor = 2)
@@ -35,7 +38,8 @@ void color(CountyClusterClass curr){
 int main(){
 
 	CountyClusterClass one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve;
-
+	
+	//These are each node, with an array of each touching node
 	one.surroundingClusters_ = 4;
 	one.surroundingClusterArray_[0] = two;
 	one.surroundingClusterArray_[1] = three;
@@ -107,6 +111,7 @@ int main(){
 
 	CountyClusterClass ohioArray[12];
 
+	//each node
 	ohioArray[0] = one;
 	ohioArray[1] = two;
 	ohioArray[2] = three;
