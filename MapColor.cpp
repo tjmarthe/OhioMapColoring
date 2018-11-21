@@ -121,6 +121,36 @@ int main(){
 	ohioArray[11] = twelve;
 
 
+	int nodeLength[11] = { 10 , 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 };
+	int tempLength;
+	//Put lengths into an array
+	for (int i = 0; i < 12; ++i) {
+		tempLength = sizeof(ohioArray.surroundingClustersArray_) / sizeof(ohioArray[i].surroundingClustersArray_);
+		if (nodeLength[i] > tempLength) {
+			nodeLength[i] = tempLength;
+		}
+	}
+	for (int i = 0; i < 12; ++i) {
+		cout << "nodeLength " << i << ": " << nodeLength[i] << endl;
+	}
+	//Have our array fill up with nodeLength
+	int ascendingArrays[11];
+	for (int i = 0; i < 12; ++i) {
+		ascendingArrays[i] = nodeLength[i];
+	}
+	//Meant for sorting from lowest to highest
+	int temp;
+	for (int i = 0; i < 12; ++i) {
+		for (int j = i + 1; j < 12; ++j) {
+			if (ascendingArrays[i] > ascendingArrays[j]) {
+				temp = ascendingArrays[i];
+				ascendingArrays[i] = ascendingArrays[j];
+				ascendingArrays[j] = temp;
+			}
+		}
+	}
 
+	/*for (int i = 0; i < 12; ++i) {
 
+	}*/
 }
