@@ -27,6 +27,8 @@ class CountyCluster
     delete[] countyArray_;
   }
 
+   int getBoardNumbers(){return surroundingClusters_;}
+ 
   int getNumber(){return clusterNumber_;}
 
   int getColor(){return clusterColor_;}
