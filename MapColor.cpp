@@ -96,7 +96,24 @@ int main(){
   ohioArray[9] = ten;
   ohioArray[10] = eleven;
   ohioArray[11] = twelve;
-
+	
+	
+	
+ CountyCluster temp;
+  for (int i = 0; i < 12; ++i) {
+    for (int j =; j < 12; ++j) {
+      if (ohioArray[j].getBoarderNumbers() > ohioArray[j+1].getBoarderNumbers()) {
+        temp = ohioArray[j];
+        ohioArray[j] = ohioArray[j+1];
+        ohioArray[j+1] = temp;
+      }
+    }
+  }
+	
+	
+	
+	
+	/*
 	int nodeLength[11] = { 10 , 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 };
 	int tempLength;
 	//Put lengths into an array
