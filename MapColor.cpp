@@ -4,35 +4,7 @@
 #include "CountyClusterClass.h"
 
 
-void color(CountyClusterClass curr){
-	
-	bool isConnectedOne;
-	bool isConnectedTwo;
-	bool isConnectedThree;
-	bool isConnectedFour;
-	bool isConnectedFive;
-	bool isConnectedSix;
-	
-	//
-	for (int i = 0; i < curr.surroundingClusters_; ++i;)
-	{
-		if(curr.surroundingClusterArray_[i].getColor = 1)
-			isConnectedOne = true;	
-		if(curr.surroundingClusterArray_[i].getColor = 2)
-			isConnectedTwo = true;
-		if(curr.surroundingClusterArray_[i].getColor = 3)
-			isConnectedThree = true;
-		if(curr.surroundingClusterArray_[i].getColor = 4)
-			isConnectedFour = true;
-		if(curr.surroundingClusterArray_[i].getColor = 5)
-			isConnectedFive= true;
-		if(curr.surroundingClusterArray_[i].getColor = 6)
-			isConnectedSix = true
 
-	}
-
-
-}
 
 
 int main(){
