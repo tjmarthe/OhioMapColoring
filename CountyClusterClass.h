@@ -33,6 +33,8 @@ class CountyCluster
 
   void getsuroundingClusters(int i){surroundingClusters_ = i;}
 
+  void assignColor(int i){colorCluster_ = i;}
+ 
   /*
   CountyCluster& getsuroundingClustersArray(){
     return surroundingClustersArray_;
