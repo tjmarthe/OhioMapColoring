@@ -35,6 +35,51 @@ class CountyCluster
 
   void assignColor(int i){colorCluster_ = i;}
  
+ void color(){
+
+  bool isConnectedOne = false;
+  bool isConnectedTwo = false;
+  bool isConnectedThree = false;
+  bool isConnectedFour = false;
+
+  //
+  for (int i = 0; i < getBoardNumbers(); ++i)
+    {
+      if(surroundingClustersArray_[i].getColor() == 1)
+        isConnectedOne = true;
+      if(surroundingClustersArray_[i].getColor() == 2)
+        isConnectedTwo = true;
+      if(surroundingClustersArray_[i].getColor() == 3)
+        isConnectedThree = true;
+      if(surroundingClustersArray_[i].getColor() == 4)
+        isConnectedFour = true;
+    }
+
+  if (isConnectedOne == false || isConnectedTwo == false || isConnectedThree == false || isConnectedFour == false)
+    {
+      assignColor(1);
+    }
+
+  if (isConnectedOne == true || isConnectedTwo == false || isConnectedThree == false || isConnectedFour == false)
+    {
+      assignColor(2);
+    }
+
+  if (isConnectedOne == true || isConnectedTwo == true || isConnectedThree == false || isConnectedFour == false)
+    {
+      assignColor(3);
+    }
+
+  if (isConnectedOne == true || isConnectedTwo == true || isConnectedThree == true || isConnectedFour == false)
+    {
+      assignColor(4);
+    }
+
+
+}
+
+
+ 
   /*
   CountyCluster& getsuroundingClustersArray(){
     return surroundingClustersArray_;
