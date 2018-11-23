@@ -45,7 +45,7 @@ class CountyCluster
   bool isConnectedFour = false;
 
   //
-  for (int i = 0; i < getBoardNumbers(); ++i)
+  for (int i = 0; i < getBoarderNumbers(); ++i)
     {
       if(surroundingClustersArray_[i].getColor() == 1)
         isConnectedOne = true;
