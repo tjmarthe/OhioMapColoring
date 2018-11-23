@@ -11,11 +11,16 @@ class CountyCluster
 {
  public:
 
-  CountyCluster(int clusterNumber, int clusterColor, int suroundingClusters, int counties):
-  clusterNumber_(clusterNumber) , clusterColor(clusterColor_), surroundingClusters(suroundingClusters_), int counties_(counties){};
-
- CountyCluster():
+  CountyCluster():
   clusterNumber_(0), clusterColor_(0), surroundingClusters_(0), surroundingClustersArray_(0) {};
+
+
+  CountyCluster(int clusterNumber, int clusterColor, int suroundingClusters, int counties){
+  clusterNumber_ = clusterNumber;
+  clusterColor_ = clusterColor;
+  surroundingClusters_ = suroundingClusters;
+  int counties_ = counties;
+  }
 
   ~CountyCluster(){
     delete[] surroundingClustersArray_;
@@ -26,16 +31,18 @@ class CountyCluster
 
   int getColor(){return clusterColor_;}
 
-  int getsuroundingClusters(){return surroundingClusters_;}
+  void getsuroundingClusters(int i){surroundingClusters_ = i;}
 
+  /*
   CountyCluster& getsuroundingClustersArray(){
     return surroundingClustersArray_;
   }
-
+  */
+  /*
   CountyNode& getCounties(){
     return countyArray_;
   }
-
+  */
   CountyCluster& operator=(CountyCluster rhs){
     int clusterColor_ = rhs.clusterColor_;
     int counties_ = rhs.counties_;
@@ -51,19 +58,28 @@ class CountyCluster
     return *this;
   }
 
+
+ void giveConnection(int index, CountyCluster cluster){
+    surroundingClustersArray_[index] = cluster;
+  }
+
   void printCluster(){
     for (int i = 0; i < counties_; ++i)
-      std::cout << countyArray_[i] << std::endl;
+       countyArray_[i].printCounty();
   }
+
  private:
   int clusterNumber_;
   //GraphClass countyGraph_; //To keep track of boarder connections(edge connections)
-int counties_;
+  int counties_;
   int clusterColor_;
   int surroundingClusters_;
-  CountyCluster* surroundingClustersArray_ = CountyCluster new[surroundingClusters_]; //Number of contraints = surrounding clusters
-  CountyNode* countyArray_ = CountyNode new[counties]; //Keep track of conties in the graph.
+  CountyCluster* surroundingClustersArray_ = new CountyCluster[surroundingClusters_]; //Number of contraints = surrounding clusters
+  CountyNode* countyArray_ = new CountyNode[counties_]; //Keep track of conties in the graph.
 };
+
+
+
 
 
 
