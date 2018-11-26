@@ -92,21 +92,57 @@ class CountyCluster
     return countyArray_;
   }
   */
-  CountyCluster& operator=(CountyCluster rhs){
+   CountyCluster(const CountyCluster &rhs){
+    std::cout << "copy begin" << std::endl;
     int clusterColor_ = rhs.clusterColor_;
     int counties_ = rhs.counties_;
     int clusterNumber_ = rhs.clusterNumber_;
     int surroundingClusters_ = rhs.surroundingClusters_;
-    for(int i = 0; i < surroundingClusters_; ++i){
+    std::cout << "lil men done" << std::endl;
+
+    memcpy(surroundingClustersArray_, rhs.surroundingClustersArray_, sizeof(int\
+) * surroundingClusters_);
+
+
+    /*
+    for(int i = 0; i < 10; ++i){
+      std::cout << "boarder array copy " << i << std::endl;
       surroundingClustersArray_[i] = rhs.surroundingClustersArray_[i];
-    }
-    for(int i = 0; i < counties_; ++i){
+      }*/
+    for(int i = 0; i < 10; ++i){
       countyArray_ = rhs.countyArray_;
     }
 
-    return *this;
+    std::cout << "copy end" << std::endl;
   }
 
+  const CountyCluster& operator=(const CountyCluster& rhs){
+
+
+    std::cout << "overloard begin" << std::endl;
+    if(this == &rhs) return *this;
+    int clusterColor_ = rhs.clusterColor_;
+    int counties_ = rhs.counties_;
+    int clusterNumber_ = rhs.clusterNumber_;
+    int surroundingClusters_ = rhs.surroundingClusters_;
+    delete[] surroundingClustersArray_;
+    std::cout << "delete" << std::endl;
+    surroundingClustersArray_ = new CountyCluster[10];
+    std::cout << "allocate" << std::endl;
+    memcpy(surroundingClustersArray_, rhs.surroundingClustersArray_, sizeof(int) * surroundingClusters_);
+  /*
+    for(int i = 0; i < 10; ++i){
+      std::cout << "boarder array copy " << i << std::endl;
+      surroundingClustersArray_[i] = rhs.surroundingClustersArray_[i];
+      }*/
+    delete[] countyArray_;
+    countyArray_ = new CountyNode[10];
+    for(int i = 0; i < 10; ++i){
+      countyArray_ = rhs.countyArray_;
+    }
+    std::cout << "overload end" << std::endl;
+    return *this;
+  }
 
  void giveConnection(int index, CountyCluster cluster){
     surroundingClustersArray_[index] = cluster;
