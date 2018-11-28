@@ -27,62 +27,60 @@ class CountyCluster
     delete[] countyArray_;
   }
 
-   int getBoardNumbers(){return surroundingClusters_;}
- 
   int getNumber(){return clusterNumber_;}
 
   int getColor(){return clusterColor_;}
 
+  int getBoarderNumbers(){return surroundingClusters_;}
+
   void getsuroundingClusters(int i){surroundingClusters_ = i;}
 
-  void assignColor(int i){colorCluster_ = i;}
- 
- void color(){
-
-  bool isConnectedOne = false;
-  bool isConnectedTwo = false;
-  bool isConnectedThree = false;
-  bool isConnectedFour = false;
-
-  //
-  for (int i = 0; i < getBoarderNumbers(); ++i)
-    {
-      if(surroundingClustersArray_[i].getColor() == 1)
-        isConnectedOne = true;
-      if(surroundingClustersArray_[i].getColor() == 2)
-        isConnectedTwo = true;
-      if(surroundingClustersArray_[i].getColor() == 3)
-        isConnectedThree = true;
-      if(surroundingClustersArray_[i].getColor() == 4)
-        isConnectedFour = true;
-    }
-
-  if (isConnectedOne == false || isConnectedTwo == false || isConnectedThree == false || isConnectedFour == false)
-    {
-      assignColor(1);
-    }
-
-  if (isConnectedOne == true || isConnectedTwo == false || isConnectedThree == false || isConnectedFour == false)
-    {
-      assignColor(2);
-    }
-
-  if (isConnectedOne == true || isConnectedTwo == true || isConnectedThree == false || isConnectedFour == false)
-    {
-      assignColor(3);
-    }
-
-  if (isConnectedOne == true || isConnectedTwo == true || isConnectedThree == true || isConnectedFour == false)
-    {
-      assignColor(4);
-    }
+  void assignColor(int i){clusterColor_ = i;}
 
 
-}
+  void color(){
+
+    bool isConnectedOne = false;
+    bool isConnectedTwo = false;
+    bool isConnectedThree = false;
+    bool isConnectedFour = false;
+
+    //
+    for (int i = 0; i < getBoarderNumbers(); ++i)
+      {
+        if(surroundingClustersArray_[i].getColor() == 1)
+          isConnectedOne = true;
+        if(surroundingClustersArray_[i].getColor() == 2)
+          isConnectedTwo = true;
+        if(surroundingClustersArray_[i].getColor() == 3)
+          isConnectedThree = true;
+        if(surroundingClustersArray_[i].getColor() == 4)
+          isConnectedFour = true;
+      }
+ if (isConnectedOne == false || isConnectedTwo == false || isConnectedThree == false || isConnectedFour == false)
+      {
+        assignColor(1);
+      }
+
+    if (isConnectedOne == true || isConnectedTwo == false || isConnectedThree == false || isConnectedFour == false)
+      {
+        assignColor(2);
+      }
+
+    if (isConnectedOne == true || isConnectedTwo == true || isConnectedThree == false || isConnectedFour == false)
+      {
+        assignColor(3);
+      }
+
+    if (isConnectedOne == true || isConnectedTwo == true || isConnectedThree == true || isConnectedFour == false)
+      {
+        assignColor(4);
+      }
 
 
- 
-  /*
+  }
+
+    /*
   CountyCluster& getsuroundingClustersArray(){
     return surroundingClustersArray_;
   }
@@ -92,7 +90,10 @@ class CountyCluster
     return countyArray_;
   }
   */
-   CountyCluster(const CountyCluster &rhs){
+
+
+
+  CountyCluster(const CountyCluster &rhs){
     std::cout << "copy begin" << std::endl;
     int clusterColor_ = rhs.clusterColor_;
     int counties_ = rhs.counties_;
@@ -100,8 +101,7 @@ class CountyCluster
     int surroundingClusters_ = rhs.surroundingClusters_;
     std::cout << "lil men done" << std::endl;
 
-    memcpy(surroundingClustersArray_, rhs.surroundingClustersArray_, sizeof(int\
-) * surroundingClusters_);
+    memcpy(surroundingClustersArray_, rhs.surroundingClustersArray_, sizeof(int) * surroundingClusters_);
 
 
     /*
@@ -114,9 +114,8 @@ class CountyCluster
     }
 
     std::cout << "copy end" << std::endl;
-  }
 
-  const CountyCluster& operator=(const CountyCluster& rhs){
+ const CountyCluster& operator=(const CountyCluster& rhs){
 
 
     std::cout << "overloard begin" << std::endl;
@@ -125,12 +124,14 @@ class CountyCluster
     int counties_ = rhs.counties_;
     int clusterNumber_ = rhs.clusterNumber_;
     int surroundingClusters_ = rhs.surroundingClusters_;
+    std::cout << "non array done" << std::endl;
     delete[] surroundingClustersArray_;
     std::cout << "delete" << std::endl;
     surroundingClustersArray_ = new CountyCluster[10];
     std::cout << "allocate" << std::endl;
     memcpy(surroundingClustersArray_, rhs.surroundingClustersArray_, sizeof(int) * surroundingClusters_);
-  /*
+
+    /*
     for(int i = 0; i < 10; ++i){
       std::cout << "boarder array copy " << i << std::endl;
       surroundingClustersArray_[i] = rhs.surroundingClustersArray_[i];
@@ -144,14 +145,17 @@ class CountyCluster
     return *this;
   }
 
- void giveConnection(int index, CountyCluster cluster){
+
+
+  void giveConnection(int index, CountyCluster cluster){
+    std::cout << "give connection" << std::endl;
     surroundingClustersArray_[index] = cluster;
   }
 
   void printCluster(){
-    for (int i = 0; i < counties_; ++i)
-       countyArray_[i].printCounty();
-  }
+    std::cout << counties_ << std::endl;
+    std::cout << surroundingClusters_ << std::endl;
+}
 
  private:
   int clusterNumber_;
@@ -159,11 +163,9 @@ class CountyCluster
   int counties_;
   int clusterColor_;
   int surroundingClusters_;
-  CountyCluster* surroundingClustersArray_ = new CountyCluster[surroundingClusters_]; //Number of contraints = surrounding clusters
-  CountyNode* countyArray_ = new CountyNode[counties_]; //Keep track of conties in the graph.
+  CountyCluster* surroundingClustersArray_ = new CountyCluster[10]; //Number of contraints = surrounding clusters
+  CountyNode* countyArray_ = new CountyNode[10]; //Keep track of conties in the graph.
 };
-
-
 
 
 
