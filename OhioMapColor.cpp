@@ -14,7 +14,7 @@ public:
     BoarderList = new std::list<int>[num];
   }
   ~ColorGraph(){
-    delete [] BoarderVec;
+    delete [] BoarderList;
   }
 
   void Color(){
@@ -64,18 +64,9 @@ private:
 
 int main(){
 
-  ColorGraph graph(12);
+  ColorGraph OhioGraph(12);
 
-  graph.giveConnection(0,1);
-  graph.giveConnection(0,2);
-  graph.giveConnection(1,2);
-  graph.giveConnection(1,4);
-  graph.giveConnection(2,4);
-  graph.giveConnection(4,3);
-
-
-
-
+/* connection for ohio graph */
 
 
   std::cout << "How many nodes in your map to color? : ";
@@ -87,8 +78,8 @@ int main(){
   std::cout << "Please enter your connections." << std::endl;
   int connector;
   int connectie;
-  string toEnd;
-  while(toEnd != 1){
+  std::string toEnd;
+  while(toEnd != "yes"){
     std::cout << "Node: ";
     std::cin >> connector;
     std::cout << "is connected to Node: ";
